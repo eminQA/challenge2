@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "98f523b4-839c-44ab-a509-57c0d5176030",
+		"name": "SafeBrowsingAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27908526",
+		"_collection_link": "https://www.postman.com/eminmamedzade/workspace/attestation/collection/27908526-98f523b4-839c-44ab-a509-57c0d5176030?action=share&source=collection_link&creator=27908526"
+	},
+	"item": [
+		{
+			"name": "Получение списка",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/{{APIversion}}/threatLists?key={{APIkey}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{APIversion}}",
+						"threatLists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIkey}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Проверка по URL (Google)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"threatInfo\": {\n    \"threatTypes\": [\"MALWARE\"],\n    \"platformTypes\": [\"OSX\"],\n    \"threatEntryTypes\": [\"URL\"],\n    \"threatEntries\": [\n      {\"url\": \"https://www.google.com/\"}\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{APIversion}}/threatMatches:find?key={{APIkey}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{APIversion}}",
+						"threatMatches:find"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIkey}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Проверка по URL (Yandex)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"threatInfo\": {\n    \"threatTypes\": [\"MALWARE\"],\n    \"platformTypes\": [\"OSX\"],\n    \"threatEntryTypes\": [\"URL\"],\n    \"threatEntries\": [\n      {\"url\": \"https://yandex.com/\"}\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/{{APIversion}}/threatMatches:find?key={{APIkey}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"{{APIversion}}",
+						"threatMatches:find"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIkey}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://sba.yandex.net"
+		},
+		{
+			"key": "APIversion",
+			"value": "v4"
+		},
+		{
+			"key": "APIkey",
+			"value": "065c3052-02fc-4a96-9396-e406817ea746"
+		}
+	]
+}
